@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>منصة التدريب</title>
+  <link href="dist/output.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-background-light text-text-light dark:bg-background-dark dark:text-text-dark" dir="rtl">
+
+  <!-- Header -->
+  <header class="bg-primary-dark text-text-dark p-4 shadow-md dark:bg-primary-light dark:text-text-dark">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold">منصة التدريب</h1>
+      <nav class="hidden md:flex md:flex-row md:items-center w-full md:w-auto">
+        <a href="index.html" class="mr-4 hover:underline mb-2 md:mb-0"><i class="fas fa-home"></i> الرئيسية</a>
+        <a href="training.html" class="mr-4 hover:underline mb-2 md:mb-0"><i class="fas fa-book"></i> الدروس</a>
+        <a href="tests.html" class="mr-4 hover:underline mb-2 md:mb-0"><i class="fas fa-pencil-alt"></i> الاختبارات</a>
+        <a href="articles.html" class="mr-4 hover:underline mb-2 md:mb-0"><i class="fas fa-newspaper"></i> المقالات</a>
+        <a href="forum.html" class="hover:underline"><i class="fas fa-comments"></i> المنتدى</a>
+      </nav>
+      <button onclick="toggleNavbar()" class="md:hidden text-white">
+        <i class="fas fa-bars"></i>
+      </button>
+      <button onclick="toggleTheme()" class="bg-yellow-500 text-white py-2 px-4 rounded flex items-center">
+        <i class="fas fa-adjust mr-2"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Navbar for mobile -->
+  <nav id="mobile-navbar" class="hidden flex-col bg-primary-dark text-text-dark p-4 md:hidden">
+    <a href="index.html" class="block py-2 hover:underline"><i class="fas fa-home"></i> الرئيسية</a>
+    <a href="training.html" class="block py-2 hover:underline"><i class="fas fa-book"></i> الدروس</a>
+    <a href="tests.html" class="block py-2 hover:underline"><i class="fas fa-pencil-alt"></i> الاختبارات</a>
+    <a href="articles.html" class="block py-2 hover:underline"><i class="fas fa-newspaper"></i> المقالات</a>
+    <a href="forum.html" class="block py-2 hover:underline"><i class="fas fa-comments"></i> المنتدى</a>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="container mx-auto mt-8">
+    <!-- Training Lessons Section -->
+    <section class="text-center bg-white p-6 rounded shadow-md dark:bg-gray-700">
+      <h2 class="text-3xl font-bold mb-4 text-primary-dark dark:text-primary-light"><i class="fas fa-chalkboard-teacher"></i> الدروس التدريبية</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Lesson Card -->
+        <div class="bg-white p-6 rounded shadow hover:shadow-lg transition duration-300 dark:bg-gray-600">
+          <h3 class="text-xl font-bold mb-2 text-primary-dark dark:text-primary-light">مقدمة في الأمن السيبراني</h3>
+          <p class="mb-4">تعلم أساسيات الأمن السيبراني وأهمية حماية البيانات.</p>
+          <a href="#" class="bg-primary-light text-white py-2 px-4 rounded hover:bg-primary transition duration-300 flex items-center justify-center">
+            <i class="fas fa-arrow-right mr-2"></i> ابدأ الآن
+          </a>
+        </div>
+        <!-- Repeat Lesson Card for more lessons -->
+        <div class="bg-white p-6 rounded shadow hover:shadow-lg transition duration-300 dark:bg-gray-600">
+          <h3 class="text-xl font-bold mb-2 text-primary-dark dark:text-primary-light">العمل عن بُعد بأمان</h3>
+          <p class="mb-4">تعلم أفضل الممارسات للعمل عن بُعد بطرق آمنة وفعالة.</p>
+          <a href="#" class="bg-primary-light text-white py-2 px-4 rounded hover:bg-primary transition duration-300 flex items-center justify-center">
+            <i class="fas fa-arrow-right mr-2"></i> ابدأ الآن
+          </a>
+        </div>
+        <!-- Add more lessons as needed -->
+      </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section class="mt-12 text-center bg-white p-6 rounded shadow-md dark:bg-gray-700">
+      <h2 class="text-3xl font-bold mb-4 text-primary-dark dark:text-primary-light"><i class="fas fa-newspaper"></i> المقالات التوعوية</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Article Card -->
+        <div class="bg-white p-6 rounded shadow hover:shadow-lg transition duration-300 dark:bg-gray-600">
+          <h3 class="text-xl font-bold mb-2 text-primary-dark dark:text-primary-light">حماية البيانات الشخصية</h3>
+          <p class="mb-4">اكتشف طرق حماية بياناتك الشخصية على الإنترنت.</p>
+          <a href="#" class="bg-primary-light text-white py-2 px-4 rounded hover:bg-primary transition duration-300 flex items-center justify-center">
+            <i class="fas fa-arrow-right mr-2"></i> اقرأ المزيد
+          </a>
+        </div>
+        <!-- Repeat Article Card for more articles -->
+        <div class="bg-white p-6 rounded shadow hover:shadow-lg transition duration-300 dark:bg-gray-600">
+          <h3 class="text-xl font-bold mb-2 text-primary-dark dark:text-primary-light">نصائح للعمل عن بُعد</h3>
+          <p class="mb-4">تعلم كيفية الحفاظ على الإنتاجية أثناء العمل عن بُعد.</p>
+          <a href="#" class="bg-primary-light text-white py-2 px-4 rounded hover:bg-primary transition duration-300 flex items-center justify-center">
+            <i class="fas fa-arrow-right mr-2"></i> اقرأ المزيد
+          </a>
+        </div>
+        <!-- Add more articles as needed -->
+      </div>
+    </section>
+
+    <!-- Lessons Display Section -->
+    <section class="mt-12 text-center bg-white p-6 rounded shadow-md dark:bg-gray-700">
+      <h2 class="text-3xl font-bold mb-4 text-primary-dark dark:text-primary-light"><i class="fas fa-chalkboard"></i> عرض الدروس</h2>
+      <div class="grid grid-cols-1 gap-4">
+        <!-- Text Lesson -->
+        <div class="bg-white p-6 rounded shadow hover:shadow-lg transition duration-300 dark:bg-gray-600">
+          <h3 class="text-xl font-bold mb-2 text-primary-dark dark:text-primary-light">درس نصي</h3>
+          <p class="mb-4">هذا درس نصي يوضح بعض الأساسيات في الأمن السيبراني.</p>
+          <a href="#" class="bg-primary-light text-white py-2 px-4 rounded hover:bg-primary transition duration-300 flex items-center justify-center">
+            <i class="fas fa-file-alt mr-2"></i> اقرأ الدرس
+          </a>
+        </div>
+        <!-- Video Lesson -->
+        <div class="bg-white p-6 rounded shadow hover:shadow-lg transition duration-300 dark:bg-gray-600">
+          <h3 class="text-xl font-bold mb-2 text-primary-dark dark:text-primary-light">درس فيديو</h3>
+          <video controls class="w-full h-auto rounded mb-4">
+            <source src="video/sample-video.mp4" type="video/mp4">
+            متصفحك لا يدعم عرض الفيديو.
+          </video>
+          <a href="#" class="bg-primary-light text-white py-2 px-4 rounded hover:bg-primary transition duration-300 flex items-center justify-center">
+            <i class="fas fa-video mr-2"></i> مشاهدة الفيديو
+          </a>
+        </div>
+        <!-- PDF Lesson -->
+        <div class="bg-white p-6 rounded shadow hover:shadow-lg transition duration-300 dark:bg-gray-600">
+          <h3 class="text-xl font-bold mb-2 text-primary-dark dark:text-primary-light">درس PDF</h3>
+          <p class="mb-4">تحميل ملف PDF يحتوي على معلومات هامة حول الأمن السيبراني.</p>
+          <a href="pdf/sample.pdf" class="bg-primary-light text-white py-2 px-4 rounded hover:bg-primary transition duration-300 flex items-center justify-center" download>
+            <i class="fas fa-file-pdf mr-2"></i> تحميل PDF
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- User Registration Section -->
+    <section class="mt-12 text-center bg-white p-6 rounded shadow-md dark:bg-gray-700">
+      <h2 class="text-3xl font-bold mb-4 text-primary-dark dark:text-primary-light"><i class="fas fa-user-plus"></i> تسجيل المستخدمين</h2>
+      <p class="mb-4">سجل الآن للوصول إلى الدروس والمقالات المتاحة على الموقع.</p>
+      <form class="mb-4">
+        <div class="mb-4">
+          <label for="name" class="block text-gray-700 dark:text-gray-300 mb-2">الاسم</label>
+          <input type="text" id="name" placeholder="ادخل الاسم كاملا" class="w-full p-2 border border-gray-300 rounded dark:bg-gray-600 dark:text-white" required>
+        </div>
+        <div class="mb-4">
+          <label for="email" class="block text-gray-700 dark:text-gray-300 mb-2">البريد الإلكتروني</label>
+          <input type="email" id="email" placeholder="example@gmail.com" class="w-full p-2 border border-gray-300 rounded dark:bg-gray-600 dark:text-white" required>
+        </div>
+        <div class="mb-4">
+          <label for="password" class="block text-gray-700 dark:text-gray-300 mb-2">كلمة المرور</label>
+          <input type="password" id="password" placeholder="ادخل كلمة المرور" class="w-full p-2 border border-gray-300 rounded dark:bg-gray-600 dark:text-white" required>
+        </div>
+        <button type="submit" class="w-full bg-primary-light text-white py-2 px-4 rounded hover:bg-primary transition duration-300">تسجيل</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white p-4 mt-12 dark:bg-gray-900">
+    <div class="container mx-auto text-center md:flex justify-between">
+      <div>
+        <h4 class="text-xl font-bold mb-2">وصف الموقع</h4>
+        <p>موقع التدريب يقدم دروس تدريبية ومقالات توعوية حول الأمن السيبراني والعمل عن بُعد.</p>
+      </div>
+      <div>
+        <h4 class="text-xl font-bold mb-2">روابط سريعة</h4>
+        <nav class="flex flex-col">
+          <a href="index.html" class="hover:underline mb-2">الرئيسية</a>
+          <a href="training.html" class="hover:underline mb-2">الدروس</a>
+          <a href="tests.html" class="hover:underline mb-2">الاختبارات</a>
+          <a href="articles.html" class="hover:underline mb-2">المقالات</a>
+          <a href="forum.html" class="hover:underline">المنتدى</a>
+        </nav>
+      </div>
+      <div>
+        <h4 class="text-xl font-bold mb-2">تواصل معنا</h4>
+        <div class="flex justify-center md:justify-start">
+          <a href="#" class="text-white hover:text-primary-light mr-4"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-white hover:text-primary-light mr-4"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="text-white hover:text-primary-light"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleNavbar() {
+      const navbar = document.getElementById('mobile-navbar');
+      navbar.classList.toggle('hidden');
+    }
+
+    function toggleTheme() {
+      const htmlElement = document.documentElement;
+      if (htmlElement.classList.contains('dark')) {
+        htmlElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      } else {
+        htmlElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme && savedTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    });
+  </script>
+</body>
+</html>
