@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles</title>
+    <link href="dist/output.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Custom Styles */
+        #back-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light text-text-light dark:bg-background-dark dark:text-text-dark">
+
+    <!-- Header -->
+    <header class="bg-primary-dark text-text-dark p-4 shadow-md dark:bg-primary-light dark:text-text-dark">
+        <div class="container mx-auto flex justify-between items-center">
+            <img src="images/logo.png" width="80px" alt="Logo">
+            <nav id="navbar" class="hidden lg:flex md:flex-row md:items-center w-full md:w-auto">
+                <a href="index.html" class="mr-4 hover:underline mb-2 md:mb-0"><i class="fas fa-home"></i> Home</a>
+                <a href="training.html" class="mr-4 hover:underline mb-2 md:mb-0"><i class="fas fa-book"></i> Training</a>
+                <a href="tests.html" class="mr-4 hover:underline mb-2 md:mb-0"><i class="fas fa-pencil-alt"></i> Tests</a>
+                <a href="articles.html" class="mr-4 hover:underline mb-2 md:mb-0"><i class="fas fa-newspaper"></i> Articles</a>
+                <a href="forum.html" class="hover:underline"><i class="fas fa-comments"></i> Forum</a>
+            </nav>
+            <button onclick="toggleNavbar()" class="md:hidden text-white">
+                <i class="fas fa-bars"></i>
+            </button>
+            <button onclick="toggleTheme()" class="bg-yellow-500 text-white py-2 px-4 rounded flex items-center">
+                <i class="fas fa-adjust mr-2"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Navbar for mobile -->
+    <nav id="mobile-navbar" class="hidden flex-col bg-primary-dark text-text-dark p-4 md:hidden">
+        <a href="index.html" class="block py-2 hover:underline"><i class="fas fa-home"></i> Home</a>
+        <a href="training.html" class="block py-2 hover:underline"><i class="fas fa-book"></i> Training</a>
+        <a href="tests.html" class="block py-2 hover:underline"><i class="fas fa-pencil-alt"></i> Tests</a>
+        <a href="articles.html" class="block py-2 hover:underline"><i class="fas fa-newspaper"></i> Articles</a>
+        <a href="forum.html" class="block py-2 hover:underline"><i class="fas fa-comments"></i> Forum</a>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto mt-8 px-4">
+        <section class="mb-8">
+            <h1 class="text-3xl font-bold mb-4">Blog Articles</h1>
+            <div id="article-list" class="flex justify-center items-center gap-4">
+                <!-- Article List (small image, headline, date, excerpt) -->
+                <div onclick="showArticle(1)" class="cursor-pointer w-[250px] bg-white shadow-md rounded-lg overflow-hidden dark:bg-gray-600 dark:text-white transition transform hover:scale-105">
+                    <img src="images/hero.png" width="100%" alt="Article Image" class="h-48 object-cover">
+                    <div class="p-4">
+                        <h2 class="text-xl font-bold mb-2">Article Title 1</h2>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-2">Published on: 2024-08-04 12:00</p>
+                        <p class="text-gray-700 dark:text-gray-300">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                    </div>
+                </div>
+                <div onclick="showArticle(2)" class="cursor-pointer w-[250px] bg-white shadow-md rounded-lg overflow-hidden dark:bg-gray-600 dark:text-white transition transform hover:scale-105">
+                    <img src="images/hero.png" width="100%" alt="Article Image" class="h-48 object-cover">
+                    <div class="p-4">
+                        <h2 class="text-xl font-bold mb-2">Article Title 2</h2>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-2">Published on: 2024-08-05 14:00</p>
+                        <p class="text-gray-700 dark:text-gray-300">Vestibulum ante ipsum primis in faucibus orci luctus et...</p>
+                    </div>
+                </div>
+                <div onclick="showArticle(3)" class="cursor-pointer w-[250px] bg-white shadow-md rounded-lg overflow-hidden dark:bg-gray-600 dark:text-white transition transform hover:scale-105">
+                    <img src="images/hero.png" width="100%" alt="Article Image" class="h-48 object-cover">
+                    <div class="p-4">
+                        <h2 class="text-xl font-bold mb-2">Article Title 3</h2>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-2">Published on: 2024-08-06 16:00</p>
+                        <p class="text-gray-700 dark:text-gray-300">Curabitur non nulla sit amet nisl tempus convallis quis...</p>
+                    </div>
+                </div>
+                <!-- Add more article items here -->
+            </div>
+
+            <!-- Full Article View (hidden by default) -->
+            <div id="full-article" class="hidden">
+                <button id="back-button" onclick="hideArticle()" class="mb-4 text-primary hover:underline flex items-center"><i class="fas fa-arrow-left mr-2"></i>Back to Articles</button>
+                <article class="bg-white shadow-md rounded-lg overflow-hidden dark:bg-gray-600 dark:text-white">
+                    <img id="full-article-image" src="https://via.placeholder.com/600x400" alt="Article Image" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h2 id="full-article-title" class="text-3xl font-bold mb-4">Full Article Title</h2>
+                        <p id="full-article-date" class="text-gray-600 dark:text-gray-300 text-sm mb-4">Published on: 2024-08-04 12:00</p>
+                        <p id="full-article-content" class="text-gray-700 dark:text-gray-300">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white p-4 mt-12 dark:bg-gray-900">
+        <div class="container mx-auto text-center md:flex justify-between">
+            <div>
+                <h4 class="text-xl font-bold mb-2">Site Description</h4>
+                <p>This training site offers educational lessons and awareness articles about cybersecurity and remote work.</p>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold mb-2">Quick Links</h4>
+                <nav class="flex flex-col">
+                    <a href="index.html" class="hover:underline mb-2">Home</a>
+                    <a href="training.html" class="hover:underline mb-2">Training</a>
+                    <a href="tests.html" class="hover:underline mb-2">Tests</a>
+                    <a href="articles.html" class="hover:underline mb-2">Articles</a>
+                    <a href="forum.html" class="hover:underline">Forum</a>
+                </nav>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold mb-2">Contact Us</h4>
+                <div class="flex justify-center md:justify-start">
+                    <a href="#" class="text-white hover:text-primary-light mr-4"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-white hover:text-primary-light mr-4"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-white hover:text-primary-light"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showArticle(id) {
+            // Logic to load the full article based on the ID (e.g., via AJAX or predefined data)
+            document.getElementById('article-list').classList.add('hidden');
+            document.getElementById('full-article').classList.remove('hidden');
+            // Example data (replace with actual data fetching logic)
+            document.getElementById('full-article-title').textContent = 'Article Title ' + id;
+            document.getElementById('full-article-date').textContent = 'Published on: 2024-08-04 12:00';
+            document.getElementById('full-article-content').textContent = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.';
+        }
+
+        function hideArticle() {
+            document.getElementById('article-list').classList.remove('hidden');
+            document.getElementById('full-article').classList.add('hidden');
+        }
+
+        function toggleNavbar() {
+            const navbar = document.getElementById('mobile-navbar');
+            navbar.classList.toggle('hidden');
+        }
+
+        function toggleTheme() {
+            const htmlElement = document.documentElement;
+            if (htmlElement.classList.contains('dark')) {
+                htmlElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                htmlElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme && savedTheme === 'dark') {
+                document.documentElement.classList.add('dark');
+            }
+        });
+    </script>
+</body>
+
+</html>

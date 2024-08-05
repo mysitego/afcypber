@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cybersecurity Lessons</title>
+  <link href="dist/output.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-background-light text-text-light dark:bg-background-dark dark:text-text-dark">
+
+  <!-- Header -->
+  <header class="bg-primary-dark text-text-dark p-4 shadow-md dark:bg-primary-light dark:text-text-dark">
+    <div class="container mx-auto flex justify-between items-center">
+        <img src="images/logo.png" width="60px" alt="">
+      <nav id="navbar" class="hidden lg:block md:flex md:flex-row md:items-center w-full md:w-auto">
+        <a href="index.html" class="mr-4 hover:underline mb-2 md:mb-0"><i class="fas fa-home"></i> Home</a>
+        <a href="training.html" class="mr-4 hover:underline mb-2 md:mb-0"><i class="fas fa-book"></i> Training</a>
+        <a href="tests.html" class="mr-4 hover:underline mb-2 md:mb-0"><i class="fas fa-pencil-alt"></i> Tests</a>
+        <a href="articles.html" class="mr-4 hover:underline mb-2 md:mb-0"><i class="fas fa-newspaper"></i> Articles</a>
+        <a href="forum.html" class="hover:underline"><i class="fas fa-comments"></i> Forum</a>
+      </nav>
+      <button onclick="toggleNavbar()" class="md:hidden text-white">
+        <i class="fas fa-bars"></i>
+      </button>
+      <button onclick="toggleTheme()" class="bg-yellow-500 text-white py-2 px-4 rounded flex items-center">
+        <i class="fas fa-adjust mr-2"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Navbar for mobile -->
+  <nav id="mobile-navbar" class="hidden flex-col bg-primary-dark text-text-dark p-4 md:hidden">
+    <a href="index.html" class="block py-2 hover:underline"><i class="fas fa-home"></i> Home</a>
+    <a href="training.html" class="block py-2 hover:underline"><i class="fas fa-book"></i> Training</a>
+    <a href="tests.html" class="block py-2 hover:underline"><i class="fas fa-pencil-alt"></i> Tests</a>
+    <a href="articles.html" class="block py-2 hover:underline"><i class="fas fa-newspaper"></i> Articles</a>
+    <a href="forum.html" class="block py-2 hover:underline"><i class="fas fa-comments"></i> Forum</a>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="container mx-auto mt-8 flex flex-col md:flex-row">
+    <!-- Video Playlist -->
+    <aside id="video-playlist" class="w-1/2 md:w-1/4 bg-white shadow-md rounded-lg p-4 dark:bg-gray-600 dark:text-white">
+      <h2 class="text-xl font-bold mb-4">Playlist</h2>
+      <ul>
+        <li class="mb-2 px-4 py-3 border rounded ">
+          <a href="#video1" onclick="showVideo('video1')" class="hover:underline">Introduction to Cybersecurity</a><br>
+          <small class="text-gray-500 dark:text-gray-300">Broadcast date: 2024-07-01</small>
+        </li >
+        <li  class="mb-2 px-4 py-3 border rounded ">
+          <a href="#video2" onclick="showVideo('video2')" class="hover:underline">Cybersecurity Attacks and How to Defend Against Them</a><br>
+          <small class="text-gray-500 dark:text-gray-300">Broadcast date: 2024-07-05</small>
+        </li>
+        <li class="mb-2  px-4 py-3 border rounded ">
+          <a href="#video3" onclick="showVideo('video3')" class="hover:underline">Protecting Personal Data Online</a><br>
+          <small class="text-gray-500 dark:text-gray-300">Broadcast date: 2024-07-10</small>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Video and Comments Section -->
+    <section class="w-full md:w-3/4 bg-white shadow-md rounded-lg p-4 dark:bg-gray-600 dark:text-white">
+      <div id="video1" class="video-section">
+        <video controls class="w-full h-64 rounded mb-4">
+          <source src="video/sample-video.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <h2 class="text-2xl font-bold mb-4">Introduction to Cybersecurity</h2>
+        <p class="text-gray-600 dark:text-gray-300 mb-4">Learn the basics of cybersecurity and its importance in the digital age.</p>
+
+        <!-- Comments Section -->
+        <div id="comments1" class="mb-4">
+          <h3 class="text-xl font-bold mb-2">Comments</h3>
+          <div class="p-4 bg-gray-200 rounded mb-2 dark:bg-gray-800">
+            <p>User1: This is a great introduction!</p>
+            <button onclick="toggleReplies(this)" class="text-blue-500 hover:underline">View Replies</button>
+            <div class="replies hidden pl-4">
+              <p class="text-sm">User2: I agree!</p>
+              <p class="text-sm">User3: Very informative!</p>
+              <textarea class="w-full p-2 border border-gray-300 rounded dark:bg-gray-800 dark:text-white mt-2" placeholder="Add a reply"></textarea>
+              <button onclick="addReply(this)" class="bg-primary-light text-white py-1 px-2 rounded mt-2 hover:bg-primary transition duration-300">Reply</button>
+            </div>
+          </div>
+          <div class="p-4 bg-gray-200 rounded mb-2 dark:bg-gray-800">
+            <p>User4: I learned a lot from this video.</p>
+            <button onclick="toggleReplies(this)" class="text-blue-500 hover:underline">View Replies</button>
+            <div class="replies hidden pl-4">
+              <p class="text-sm">User5: Same here!</p>
+              <textarea class="w-full p-2 border border-gray-300 rounded dark:bg-gray-800 dark:text-white mt-2" placeholder="Add a reply"></textarea>
+              <button onclick="addReply(this)" class="bg-primary-light text-white py-1 px-2 rounded mt-2 hover:bg-primary transition duration-300">Reply</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add Comment Section -->
+        <div class="mb-4">
+          <textarea id="comment-input1" class="w-full p-2 border border-gray-300 rounded dark:bg-gray-800 dark:text-white" placeholder="Add a comment"></textarea>
+          <button onclick="addComment('comment-input1', 'comments1')" class="bg-primary-light text-white py-2 px-4 rounded mt-2 hover:bg-primary transition duration-300">Submit</button>
+        </div>
+      </div>
+
+      <div id="video2" class="video-section hidden">
+        <video controls class="w-full h-64 rounded mb-4">
+          <source src="video/sample-video2.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <h2 class="text-2xl font-bold mb-4">Cybersecurity Attacks and How to Defend Against Them</h2>
+        <p class="text-gray-600 dark:text-gray-300 mb-4">Learn about different types of cybersecurity attacks and how to protect yourself.</p>
+
+        <!-- Comments Section -->
+        <div id="comments2" class="mb-4">
+          <h3 class="text-xl font-bold mb-2">Comments</h3>
+          <div class="p-4 bg-gray-200 rounded mb-2 dark:bg-gray-800">
+            <p>User1: This is a great video on cybersecurity attacks!</p>
+            <button onclick="toggleReplies(this)" class="text-blue-500 hover:underline">View Replies</button>
+            <div class="replies hidden pl-4">
+              <p class="text-sm">User2: Very detailed!</p>
+              <textarea class="w-full p-2 border border-gray-300 rounded dark:bg-gray-800 dark:text-white mt-2" placeholder="Add a reply"></textarea>
+              <button onclick="addReply(this)" class="bg-primary-light text-white py-1 px-2 rounded mt-2 hover:bg-primary transition duration-300">Reply</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add Comment Section -->
+        <div class="mb-4">
+          <textarea id="comment-input2" class="w-full p-2 border border-gray-300 rounded dark:bg-gray-800 dark:text-white" placeholder="Add a comment"></textarea>
+          <button onclick="addComment('comment-input2', 'comments2')" class="bg-primary-light text-white py-2 px-4 rounded mt-2 hover:bg-primary transition duration-300">Submit</button>
+        </div>
+      </div>
+
+      <div id="video3" class="video-section hidden">
+        <video controls class="w-full h-64 rounded mb-4">
+          <source src="video/sample-video3.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <h2 class="text-2xl font-bold mb-4">Protecting Personal Data Online</h2>
+        <p class="text-gray-600 dark:text-gray-300 mb-4">Learn how to protect your personal data while browsing the internet.</p>
+
+        <!-- Comments Section -->
+        <div id="comments3" class="mb-4">
+          <h3 class="text-xl font-bold mb-2">Comments</h3>
+          <div class="p-4 bg-gray-200 rounded mb-2 dark:bg-gray-800">
+            <p>User1: Very useful tips on protecting personal data!</p>
+            <button onclick="toggleReplies(this)" class="text-blue-500 hover:underline">View Replies</button>
+            <div class="replies hidden pl-4">
+              <p class="text-sm">User2: I will definitely follow these tips!</p>
+              <textarea class="w-full p-2 border border-gray-300 rounded dark:bg-gray-800 dark:text-white mt-2" placeholder="Add a reply"></textarea>
+              <button onclick="addReply(this)" class="bg-primary-light text-white py-1 px-2 rounded mt-2 hover:bg-primary transition duration-300">Reply</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add Comment Section -->
+        <div class="mb-4">
+          <textarea id="comment-input3" class="w-full p-2 border border-gray-300 rounded dark:bg-gray-800 dark:text-white" placeholder="Add a comment"></textarea>
+          <button onclick="addComment('comment-input3', 'comments3')" class="bg-primary-light text-white py-2 px-4 rounded mt-2 hover:bg-primary transition duration-300">Submit</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white p-4 mt-12 dark:bg-gray-900">
+    <div class="container mx-auto text-center md:flex justify-between">
+      <div>
+        <h4 class="text-xl font-bold mb-2">Site Description</h4>
+        <p>This training site offers educational lessons and awareness articles about cybersecurity and remote work.</p>
+      </div>
+      <div>
+        <h4 class="text-xl font-bold mb-2">Quick Links</h4>
+        <nav class="flex flex-col">
+          <a href="index.html" class="hover:underline mb-2">Home</a>
+          <a href="training.html" class="hover:underline mb-2">Courses</a>
+          <a href="tests.html" class="hover:underline mb-2">Tests</a>
+          <a href="articles.html" class="hover:underline mb-2">Articles</a>
+          <a href="forum.html" class="hover:underline">Forum</a>
+        </nav>
+      </div>
+      <div>
+        <h4 class="text-xl font-bold mb-2">Contact Us</h4>
+        <div class="flex justify-center md:justify-start">
+          <a href="#" class="text-white hover:text-primary-light mr-4"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-white hover:text-primary-light mr-4"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="text-white hover:text-primary-light"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleNavbar() {
+      const navbar = document.getElementById('mobile-navbar');
+      navbar.classList.toggle('hidden');
+    }
+
+    function toggleTheme() {
+      const htmlElement = document.documentElement;
+      if (htmlElement.classList.contains('dark')) {
+        htmlElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      } else {
+        htmlElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme && savedTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    });
+
+    function showVideo(id) {
+      const sections = document.querySelectorAll('.video-section');
+      sections.forEach(section => section.classList.add('hidden'));
+      document.getElementById(id).classList.remove('hidden');
+    }
+
+    function addComment(inputId, commentsId) {
+      const commentInput = document.getElementById(inputId);
+      const commentText = commentInput.value.trim();
+      if (commentText) {
+        const commentSection = document.getElementById(commentsId);
+        const newComment = document.createElement('div');
+        newComment.classList.add('p-4', 'bg-gray-200', 'rounded', 'mb-2', 'dark:bg-gray-800');
+        newComment.innerHTML = `<p>${commentText}</p><button onclick="toggleReplies(this)" class="text-blue-500 hover:underline">View Replies</button><div class="replies hidden pl-4"><textarea class="w-full p-2 border border-gray-300 rounded dark:bg-gray-800 dark:text-white mt-2" placeholder="Add a reply"></textarea><button onclick="addReply(this)" class="bg-primary-light text-white py-1 px-2 rounded mt-2 hover:bg-primary transition duration-300">Reply</button></div>`;
+        commentSection.appendChild(newComment);
+        commentInput.value = '';
+      }
+    }
+
+    function addReply(button) {
+      const replyInput = button.previousElementSibling;
+      const replyText = replyInput.value.trim();
+      if (replyText) {
+        const repliesSection = button.parentElement;
+        const newReply = document.createElement('p');
+        newReply.classList.add('text-sm');
+        newReply.textContent = replyText;
+        repliesSection.insertBefore(newReply, replyInput);
+        replyInput.value = '';
+      }
+    }
+
+    function toggleReplies(button) {
+      const replies = button.nextElementSibling;
+      replies.classList.toggle('hidden');
+    }
+
+    function togglePlaylist() {
+      const playlist = document.getElementById('video-playlist');
+      playlist.classList.toggle('hidden');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Skill Test</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+      --primary-light: #4fd1c5;
+      --primary: #319795;
+      --primary-dark: #285e61;
+      --background-light: #f0f4f8;
+      --background-dark: #1a202c;
+      --text-light: #1a202c;
+      --text-dark: #ffffff;
+    }
+    .bg-primary-light { background-color: var(--primary-light); }
+    .bg-primary { background-color: var(--primary); }
+    .bg-primary-dark { background-color: var(--primary-dark); }
+    .bg-background-light { background-color: var(--background-light); }
+    .bg-background-dark { background-color: var(--background-dark); }
+    .text-primary-light { color: var(--primary-light); }
+    .text-primary { color: var(--primary); }
+    .text-primary-dark { color: var(--primary-dark); }
+    .text-text-light { color: var(--text-light); }
+    .text-text-dark { color: var(--text-dark); }
+  </style>
+</head>
+<body class="bg-background-light text-text-light dark:bg-background-dark dark:text-text-dark min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-primary-dark text-text-dark p-4 shadow-md dark:bg-primary-light dark:text-text-dark">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold">Interactive Skill Test</h1>
+      <nav id="navbar" class="hidden lg:block md:flex md:flex-row md:items-center w-full md:w-auto">
+        <a href="index.html" class="mr-4 hover:underline mb-2 md:mb-0"><i class="fas fa-home"></i> Home</a>
+        <a href="training.html" class="mr-4 hover:underline mb-2 md:mb-0"><i class="fas fa-book"></i> Training</a>
+        <a href="tests.html" class="mr-4 hover:underline mb-2 md:mb-0"><i class="fas fa-pencil-alt"></i> Tests</a>
+        <a href="articles.html" class="mr-4 hover:underline mb-2 md:mb-0"><i class="fas fa-newspaper"></i> Articles</a>
+        <a href="forum.html" class="hover:underline"><i class="fas fa-comments"></i> Forum</a>
+      </nav>
+      <button onclick="toggleNavbar()" class="md:hidden text-white">
+        <i class="fas fa-bars"></i>
+      </button>
+      <button onclick="toggleTheme()" class="bg-yellow-500 text-white py-2 px-4 rounded flex items-center">
+        <i class="fas fa-adjust mr-2"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Navbar for mobile -->
+  <nav id="mobile-navbar" class="hidden flex-col bg-primary-dark text-text-dark p-4 md:hidden">
+    <a href="index.html" class="block py-2 hover:underline"><i class="fas fa-home"></i> Home</a>
+    <a href="training.html" class="block py-2 hover:underline"><i class="fas fa-book"></i> Training</a>
+    <a href="tests.html" class="block py-2 hover:underline"><i class="fas fa-pencil-alt"></i> Tests</a>
+    <a href="articles.html" class="block py-2 hover:underline"><i class="fas fa-newspaper"></i> Articles</a>
+    <a href="forum.html" class="block py-2 hover:underline"><i class="fas fa-comments"></i> Forum</a>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="flex-grow flex items-center justify-center">
+    <div id="quiz-container" class="bg-white shadow-md rounded-lg p-6 dark:bg-gray-700 dark:text-white w-full max-w-xl mx-auto">
+      <div id="question-container">
+        <h2 id="question" class="text-xl font-bold mb-4"></h2>
+        <div id="answers" class="mb-4"></div>
+        <button id="next-button" onclick="nextQuestion()" class="bg-primary-light text-white py-2 px-4 rounded hover:bg-primary transition duration-300">Next</button>
+      </div>
+      <div id="result-container" class="hidden text-center">
+        <h2 id="result-message" class="text-2xl font-bold mb-4"></h2>
+        <img id="result-image" src="" alt="Result Image" class="mx-auto">
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white p-4 mt-12 dark:bg-gray-900">
+    <div class="container mx-auto text-center md:flex justify-between">
+      <div>
+        <h4 class="text-xl font-bold mb-2">Site Description</h4>
+        <p>This training site offers educational lessons and awareness articles about cybersecurity and remote work.</p>
+      </div>
+      <div>
+        <h4 class="text-xl font-bold mb-2">Quick Links</h4>
+        <nav class="flex flex-col">
+          <a href="index.html" class="hover:underline mb-2">Home</a>
+          <a href="training.html" class="hover:underline mb-2">Training</a>
+          <a href="tests.html" class="hover:underline mb-2">Tests</a>
+          <a href="articles.html" class="hover:underline mb-2">Articles</a>
+          <a href="forum.html" class="hover:underline">Forum</a>
+        </nav>
+      </div>
+      <div>
+        <h4 class="text-xl font-bold mb-2">Contact Us</h4>
+        <div class="flex justify-center md:justify-start">
+          <a href="#" class="text-white hover:text-primary-light mr-4"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-white hover:text-primary-light mr-4"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="text-white hover:text-primary-light"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const questions = [
+      {
+        question: "Cybersecurity is important for protecting personal data.",
+        answers: {
+          true: "True",
+          false: "False"
+        },
+        correct: "true"
+      },
+      {
+        question: "Which of the following is a common cybersecurity threat?",
+        answers: {
+          a: "Phishing",
+          b: "Spoofing",
+          c: "All of the above"
+        },
+        correct: "c"
+      },
+      {
+        question: "Strong passwords are crucial for cybersecurity.",
+        answers: {
+          true: "True",
+          false: "False"
+        },
+        correct: "true"
+      },
+      {
+        question: "Which is a method of protecting personal data online?",
+        answers: {
+          a: "Using strong passwords",
+          b: "Avoiding suspicious links",
+          c: "All of the above"
+        },
+        correct: "c"
+      },
+      {
+        question: "Cybersecurity only concerns companies, not individuals.",
+        answers: {
+          true: "True",
+          false: "False"
+        },
+        correct: "false"
+      }
+    ];
+
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    function loadQuestion() {
+      const currentQuestion = questions[currentQuestionIndex];
+      document.getElementById("question").textContent = currentQuestion.question;
+      const answersDiv = document.getElementById("answers");
+      answersDiv.innerHTML = "";
+      for (const [key, value] of Object.entries(currentQuestion.answers)) {
+        const label = document.createElement("label");
+        label.classList.add("block", "mb-2");
+        const input = document.createElement("input");
+        input.type = "radio";
+        input.name = "answer";
+        input.value = key;
+        input.classList.add("mr-2");
+        label.appendChild(input);
+        label.appendChild(document.createTextNode(value));
+        answersDiv.appendChild(label);
+      }
+    }
+
+    function nextQuestion() {
+      const selectedAnswer = document.querySelector('input[name="answer"]:checked');
+      if (selectedAnswer) {
+        if (selectedAnswer.value === questions[currentQuestionIndex].correct) {
+          score++;
+        }
+        currentQuestionIndex++;
+        if (currentQuestionIndex < questions.length) {
+          loadQuestion();
+        } else {
+          showResult();
+        }
+      } else {
+        alert("Please select an answer.");
+      }
+    }
+
+    function showResult() {
+      document.getElementById("question-container").classList.add("hidden");
+      const resultContainer = document.getElementById("result-container");
+      resultContainer.classList.remove("hidden");
+      const resultMessage = document.getElementById("result-message");
+      const resultImage = document.getElementById("result-image");
+
+      if (score >= 3) {
+        resultMessage.textContent = "Congratulations! You passed!";
+        resultImage.src = "https://via.placeholder.com/150/00FF00/FFFFFF?text=Success";
+      } else {
+        resultMessage.textContent = "Sorry, you failed. Better luck next time!";
+        resultImage.src = "https://via.placeholder.com/150/FF0000/FFFFFF?text=Fail";
+      }
+    }
+
+    function toggleNavbar() {
+      const navbar = document.getElementById('mobile-navbar');
+      navbar.classList.toggle('hidden');
+    }
+
+    function toggleTheme() {
+      const htmlElement = document.documentElement;
+      if (htmlElement.classList.contains('dark')) {
+        htmlElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      } else {
+        htmlElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme && savedTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+      loadQuestion();
+    });
+  </script>
+</body>
+</html>
